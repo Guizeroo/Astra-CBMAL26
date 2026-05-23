@@ -200,7 +200,7 @@
                 font-size: 28px;
             }
         }
-        .topic-list.closed {
+        .topic-row.closed {
     display: none;
 }
 .subject-header-grid {
@@ -511,15 +511,18 @@
                 localStorage.setItem('cbmal26_v4_' + e.target.id, e.target.checked);
             });
         });
+        // A barra só atualiza DEPOIS de carregar a memória
+        updateProgress();
     });
     const headers = document.querySelectorAll('.subject-header-grid');
 
-headers.forEach(header => {
-    header.addEventListener('click', () => {
-        const topicList = header.nextElementSibling;
-        if (topicList && topicList.classList.contains('topic-list')) {
-            topicList.classList.toggle('closed');
-        }
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            // Encontra todos os tópicos (linhas) dentro da disciplina clicada e esconde/mostra
+            const topics = header.parentElement.querySelectorAll('.topic-row');
+            topics.forEach(topic => {
+                topic.classList.toggle('closed');
+        });
     });
 });
     // Função para atualizar a barra de progresso
@@ -533,9 +536,6 @@ function updateProgress() {
         document.getElementById('progress-text').innerText = percentage + '% DA MISSÃO CONCLUÍDA';
     }
 }
-
-// Faz a barra atualizar logo que a página carrega
-updateProgress();
 
 // Faz a barra atualizar toda vez que você clicar em qualquer checkbox
 document.querySelectorAll('.custom-checkbox').forEach(box => {
