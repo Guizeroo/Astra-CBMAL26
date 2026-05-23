@@ -200,6 +200,13 @@
                 font-size: 28px;
             }
         }
+        .topic-list.closed {
+    display: none;
+}
+.subject-header-grid {
+    cursor: pointer;
+    user-select: none;
+}
     </style>
 </head>
 <body>
@@ -208,6 +215,12 @@
     <div class="header-section">
         <h2 class="sub-title">Projeto Astra - Missão CBMAL26</h2>
         <h1 class="main-title">Edital Verticalizado</h1>
+        <div style="background-color: var(--bg-card); border-radius: 8px; margin: 20px 0; padding: 15px; border: 1px solid var(--border-color); text-align: center;">
+        <div style="font-weight: 800; color: var(--accent-yellow); margin-bottom: 10px; font-size: 18px;" id="progress-text">0% DA MISSÃO CONCLUÍDA</div>
+        <div style="width: 100%; background-color: rgba(0,0,0,0.4); border-radius: 10px; height: 12px; overflow: hidden;">
+            <div id="progress-bar" style="width: 0%; height: 100%; background-color: var(--accent-red); transition: width 0.4s ease;"></div>
+        </div>
+    </div>
     </div>
 
     <div class="section-divider">Conhecimentos Gerais</div>
@@ -499,6 +512,35 @@
             });
         });
     });
+    const headers = document.querySelectorAll('.subject-header-grid');
+
+headers.forEach(header => {
+    header.addEventListener('click', () => {
+        const topicList = header.nextElementSibling;
+        if (topicList && topicList.classList.contains('topic-list')) {
+            topicList.classList.toggle('closed');
+        }
+    });
+});
+    // Função para atualizar a barra de progresso
+function updateProgress() {
+    const allCheckboxes = document.querySelectorAll('.custom-checkbox');
+    const checkedBoxes = document.querySelectorAll('.custom-checkbox:checked');
+    
+    if (allCheckboxes.length > 0) {
+        const percentage = Math.round((checkedBoxes.length / allCheckboxes.length) * 100);
+        document.getElementById('progress-bar').style.width = percentage + '%';
+        document.getElementById('progress-text').innerText = percentage + '% DA MISSÃO CONCLUÍDA';
+    }
+}
+
+// Faz a barra atualizar logo que a página carrega
+updateProgress();
+
+// Faz a barra atualizar toda vez que você clicar em qualquer checkbox
+document.querySelectorAll('.custom-checkbox').forEach(box => {
+    box.addEventListener('change', updateProgress);
+});
 </script>
 
 </body>
