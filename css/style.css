@@ -125,6 +125,34 @@ ul {
   color: #C27A04; /* Tom mais escuro para leitura */
 }
 
+
+
+
+
+/* =========================================
+   ESTILOS DO LOGOTIPO DA NAVBAR
+   ========================================= */
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 32px; /* Define a altura fixa do logo */
+  width: auto;  /* A largura se ajusta automaticamente para não distorcer */
+  object-fit: contain; /* Garante que a imagem caiba perfeitamente */
+  transition: transform 0.2s ease; /* Animação suave para o hover */
+}
+
+/* Efeito interativo quando passar o mouse no logo */
+.logo-link:hover .logo-img {
+  transform: scale(1.05);
+}
+
+
+
+
 /* =========================================================
    TEMA ESCURO: EDITAIS VERTICALIZADOS (CBMAL/PMAL)
    ========================================================= */
