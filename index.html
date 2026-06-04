@@ -375,11 +375,11 @@
 
   <header class="hero">
     <div class="hero-content">
-      <h1>Sua aprovação desenhada com <span class="highlight">estratégia militar</span> e <span class="highlight">dados.</span></h1>
-      <p>O Astra é um hub gratuito que organiza seu estudo por edital, mede sua performance e te leva direto ao que cai na prova. Sem cadastro. Sem fricção. Só execução.</p>
+      <h1>Sua aprovação desenhada com <span class="highlight">estratégia militar.</span>
+      <p>O Astra é um hub gratuito que organiza seu estudo por edital e te leva direto ao que cai na prova. Sem cadastro. Só execução.</p>
       
       <div class="hero-actions">
-        <a href="#missoes" class="btn btn-primary">Escolher minha missão &rarr;</a>
+        <a href="#missoes" class="btn btn-primary">Escolher missão &rarr;</a>
         <a href="ferramentas/calculadora.html" class="btn btn-outline">Como funciona</a>
       </div>
     </div>
@@ -404,56 +404,19 @@
 
     <div class="card-grid">
       
-      <article class="card">
-        <div class="card-top">
-          <span class="badge badge-green">● Edital Aberto</span>
-          <div class="icon-circle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-        </div>
-        <div class="card-category">SEGURANÇA PÚBLICA</div>
-        <h3>Soldado PM</h3>
-        <p>Operação completa para o edital vigente: rotina diária, ciclo de revisões e simulados com correção comentada.</p>
-        <div class="card-tags">
-          <span class="tag">Edital atualizado</span>
-          <span class="tag">Plano semanal</span>
-        </div>
-        <a href="editais/pmal.html" class="btn btn-primary btn-full">Acessar Missão &rarr;</a>
-      </article>
+      <!-- 3. Seção de Missões (Cards Dinâmicos) -->
+  <main id="missoes" class="missions">
+    
+    <div class="missions-header">
+      <h2>Escolha sua missão e inicie o <span class="highlight">treinamento.</span></h2>
+    </div>
 
-      <article class="card">
-        <div class="card-top">
-          <span class="badge badge-green">● Edital Aberto</span>
-          <div class="icon-circle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c-1.5 0-2.5-1-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.5-1 2.5-2.5 2.5z"/><path d="M11.5 19c-1.5 0-2.5-1-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.5-1 2.5-2.5 2.5z"/><path d="M6 16.5A2.5 2.5 0 0 1 8.5 14h7A2.5 2.5 0 0 1 18 16.5M12 14v-4"/><path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-          </div>
-        </div>
-        <div class="card-category">BOMBEIRO MILITAR</div>
-        <h3>Oficial CBM</h3>
-        <p>Trilha teórica e tática para o concurso de Oficial, com foco em legislação específica e provas discursivas.</p>
-        <div class="card-tags">
-          <span class="tag">Edital atualizado</span>
-          <span class="tag">Plano semanal</span>
-        </div>
-        <a href="editais/cbmal.html" class="btn btn-primary btn-full">Acessar Missão &rarr;</a>
-      </article>
+    <!-- Container vazio onde o JS vai injetar os cards -->
+    <div id="grid-missoes" class="card-grid">
+      <!-- Os cards aparecerão aqui automaticamente! -->
+    </div>
 
-      <article class="card">
-        <div class="card-top">
-          <span class="badge badge-orange">● Em breve</span>
-          <div class="icon-circle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-          </div>
-        </div>
-        <div class="card-category">POLÍCIA FEDERAL</div>
-        <h3>Agente PF</h3>
-        <p>Pré-cadastro de missão. Assim que o edital for publicado, a operação é liberada para todos automaticamente.</p>
-        <div class="card-tags">
-          <span class="tag">Edital atualizado</span>
-          <span class="tag">Plano semanal</span>
-        </div>
-        <button class="btn btn-disabled btn-full" disabled>Em breve</button>
-      </article>
+  </main>
 
     </div>
   </main>
