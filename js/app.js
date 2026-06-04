@@ -94,7 +94,7 @@ const missoesAstra = [
     status: "● Edital Aberto",
     statusClasse: "badge-green", // Classe CSS da cor do badge
     icone: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-    tags: ["Edital atualizado", "Plano semanal"],
+    tags: ["Edital atualizado"],
     link: "editais/pmal.html",
     textoBotao: "Acessar Missão &rarr;",
     desativado: false // Define se o botão é clicável
@@ -102,12 +102,12 @@ const missoesAstra = [
   {
     id: 2,
     categoria: "BOMBEIRO MILITAR",
-    titulo: "Oficial CBM",
+    titulo: "Soldado CBMAL",
     descricao: "Trilha teórica e tática para o concurso de Oficial, com foco em legislação específica e provas discursivas.",
     status: "● Edital Aberto",
     statusClasse: "badge-green",
     icone: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c-1.5 0-2.5-1-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.5-1 2.5-2.5 2.5z"/><path d="M11.5 19c-1.5 0-2.5-1-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.5-1 2.5-2.5 2.5z"/><path d="M6 16.5A2.5 2.5 0 0 1 8.5 14h7A2.5 2.5 0 0 1 18 16.5M12 14v-4"/><path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>`,
-    tags: ["Edital atualizado", "Plano semanal"],
+    tags: ["Edital atualizado"],
     link: "editais/cbmal.html",
     textoBotao: "Acessar Missão &rarr;",
     desativado: false
