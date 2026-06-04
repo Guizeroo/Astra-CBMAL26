@@ -3,217 +3,472 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto Astra - Hub do Concurseiro</title>
+  <title>Projeto Astra - Sua aprovação com estratégia</title>
   
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* Sobrescrevendo as variáveis globais do seu style.css apenas para a Home */
-    :root {
-      --bg-color: #050505;          /* Fundo escuro */
-      --surface-color: #121212;
-      --text-dark: #ffffff;         /* Texto principal branco */
-      --text-light: #a1a1aa;        /* Texto secundário cinza */
-      --border-color: rgba(255, 255, 255, 0.1);
-      
-      /* Variáveis extras para os efeitos da Landing Page */
-      --blue-glow: rgba(59, 130, 246, 0.3);
-    }
-
-    /* Efeitos de Fundo: Grade e Brilho Neon */
-    body {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      z-index: -2;
-    }
-
-    body::after {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 60%);
-      filter: blur(60px);
-      z-index: -1;
-    }
-
-    /* Navbar Superior */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+    /* Estilos Específicos da Landing Page */
+    
+    /* 1. Navbar Pílula */
+    .navbar-wrapper {
+      position: fixed;
+      top: 1.5rem;
+      left: 0;
       width: 100%;
-      border-bottom: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      padding: 0 1rem;
+    }
+
+    .navbar {
+      background-color: var(--full-white);
+      border-radius: var(--radius-pill);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #F0F0F0;
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--main-purple);
     }
 
     .logo span {
-      color: var(--primary-color);
+      color: var(--black);
     }
 
     .nav-links {
-      display: flex;
-      gap: 2rem;
+      display: none; /* Escondido em telas pequenas */
+      gap: 1.5rem;
     }
 
     .nav-links a {
-      color: var(--text-light);
-      text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
-      transition: color 0.3s ease;
+      color: #666;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--text-dark);
+      color: var(--main-purple);
     }
 
-    /* Área Principal (Hero) */
+    .badge-free {
+      background-color: var(--light-purple);
+      color: var(--main-purple);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* 2. Hero Section (Área Superior) */
     .hero {
-      flex: 1;
+      padding: 8rem 1.5rem 4rem; /* Espaço para a navbar fixa */
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 1.5rem;
+      gap: 4rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+    .hero-content {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 800;
       line-height: 1.1;
+      letter-spacing: -1.5px;
       margin-bottom: 1.5rem;
-      letter-spacing: -1px;
     }
 
-    .hero-subtitle {
+    .hero p {
       font-size: 1.1rem;
-      color: var(--text-light);
-      margin-bottom: 2.5rem;
+      color: #555;
       max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
-    /* Botões da Landing Page */
-    .hero-buttons {
+    .hero-actions {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Ilustração da Pasta em CSS Puro */
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
       width: 100%;
       max-width: 400px;
     }
 
-    .btn {
+    /* Efeito de brilho roxo no fundo da imagem */
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--light-purple) 0%, transparent 70%);
+      filter: blur(40px);
+      z-index: -1;
+    }
+
+    /* Construindo a pasta */
+    .css-folder {
+      position: relative;
+      width: 280px;
+      height: 180px;
+      background-color: var(--full-white);
+      border-radius: 12px 12px 20px 20px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+
+    .css-folder::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100px;
+      height: 40px;
+      background-color: var(--full-white);
+      border-radius: 12px 12px 0 0;
+    }
+
+    /* O documento saindo da pasta */
+    .css-doc {
+      position: absolute;
+      top: -40px;
+      width: 220px;
+      height: 140px;
+      background-color: #FAFAFA;
+      border: 1px solid #E5E5E5;
+      border-radius: 8px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.02);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transform: rotate(3deg); /* Leve inclinação para charme */
+      z-index: -1;
+    }
+
+    .doc-line {
+      height: 6px;
+      background-color: #E5E5E5;
+      border-radius: 4px;
+      width: 100%;
+    }
+    .doc-line.purple { background-color: var(--main-purple); width: 40%; }
+    .doc-line.short { width: 70%; }
+
+    /* Aba da frente da pasta */
+    .css-folder-front {
+      width: 100%;
+      height: 140px;
+      background-color: var(--full-white);
+      border-radius: 12px 12px 20px 20px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+      z-index: 2;
+    }
+
+    /* 3. Seção de Missões (Cards) */
+    .missions {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .missions-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .missions-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--full-white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(108, 56, 255, 0.1);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      background-color: var(--light-purple);
+      color: var(--main-purple);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem 2rem;
-      border-radius: var(--radius-lg);
+    }
+
+    .card-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+      flex: 1; /* Empurra o botão para baixo */
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background-color: var(--main-white);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1rem;
+      color: #555;
     }
 
-    .btn-primary {
-      background-color: var(--primary-color);
-      color: #ffffff;
-      box-shadow: 0 4px 20px var(--blue-glow);
+    .btn-full {
+      width: 100%;
     }
 
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+    /* 4. Footer Simples */
+    .footer-wrapper {
+      padding: 2rem 1.5rem;
+      display: flex;
+      justify-content: center;
     }
 
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--text-dark);
-      border: 1px solid var(--border-color);
+    .footer-pill {
+      background-color: var(--full-white);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1000px;
+      text-align: center;
     }
 
-    .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-color: var(--text-dark);
-      transform: translateY(-2px);
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
-    /* Responsividade dos botões */
-    @media (min-width: 640px) {
-      .hero-buttons {
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .footer-brand strong {
+      color: var(--black);
+      display: block;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    /* Responsividade Desktop */
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      
+      .hero {
         flex-direction: row;
-        max-width: 600px;
-        justify-content: center;
+        text-align: left;
+        padding-top: 10rem;
       }
-      .btn {
-        width: 100%;
-      }
+      .hero-content { text-align: left; }
+      .hero p { margin: 0 0 2.5rem 0; }
+      .hero-actions { flex-direction: row; justify-content: flex-start; }
+      
+      .card-grid { grid-template-columns: repeat(3, 1fr); }
+      
+      .footer-pill { flex-direction: row; justify-content: space-between; text-align: left;}
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-      Projeto<span>Astra</span>
-    </a>
-    
-    <div class="nav-links">
-      <a href="editais/cbmal.html">Missões</a>
-      <a href="ferramentas/calculadora.html">Calculadora</a>
-    </div>
-  </nav>
-
-  <main class="container hero">
-    <h1 class="hero-title">O Hub de Estudos que sua aprovação exige.</h1>
-    
-    <p class="hero-subtitle">
-      Domine os editais da CBMAL e PMAL. Organize seu cronograma, cumpra suas missões e alcance a farda com tecnologia e eficiência.
-    </p>
-    
-    <div class="hero-buttons">
-      <a href="editais/cbmal.html" class="btn btn-primary">
-        Acessar Missões
-      </a>
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="logo">Astra<span>.</span></a>
       
-      <a href="ferramentas/calculadora.html" class="btn btn-secondary">
-        Cronograma de Estudos
-      </a>
+      <div class="nav-links">
+        <a href="#">Início</a>
+        <a href="#">Metodologia</a>
+        <a href="#">Comunidade</a>
+      </div>
+      
+      <div class="badge-free">
+        <span>✦</span> 100% Gratuito
+      </div>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Sua aprovação desenhada com <span class="highlight">estratégia militar</span> e <span class="highlight">dados.</span></h1>
+      <p>O Astra é um hub gratuito que organiza seu estudo por edital, mede sua performance e te leva direto ao que cai na prova. Sem cadastro. Sem fricção. Só execução.</p>
+      
+      <div class="hero-actions">
+        <a href="#missoes" class="btn btn-primary">Escolher minha missão &rarr;</a>
+        <a href="ferramentas/calculadora.html" class="btn btn-outline">Como funciona</a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="css-folder">
+        <div class="css-doc">
+          <div class="doc-line purple"></div>
+          <div class="doc-line"></div>
+          <div class="doc-line short"></div>
+          <div style="margin-top: auto;" class="doc-line"></div>
+        </div>
+        <div class="css-folder-front"></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="missoes" class="missions">
+    <div class="missions-header">
+      <h2>Escolha sua missão e inicie o <span class="highlight">treinamento.</span></h2>
+    </div>
+
+    <div class="card-grid">
+      
+      <article class="card">
+        <div class="card-top">
+          <span class="badge badge-green">● Edital Aberto</span>
+          <div class="icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+        </div>
+        <div class="card-category">SEGURANÇA PÚBLICA</div>
+        <h3>Soldado PM</h3>
+        <p>Operação completa para o edital vigente: rotina diária, ciclo de revisões e simulados com correção comentada.</p>
+        <div class="card-tags">
+          <span class="tag">Edital atualizado</span>
+          <span class="tag">Plano semanal</span>
+        </div>
+        <a href="editais/pmal.html" class="btn btn-primary btn-full">Acessar Missão &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="badge badge-green">● Edital Aberto</span>
+          <div class="icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c-1.5 0-2.5-1-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.5-1 2.5-2.5 2.5z"/><path d="M11.5 19c-1.5 0-2.5-1-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.5-1 2.5-2.5 2.5z"/><path d="M6 16.5A2.5 2.5 0 0 1 8.5 14h7A2.5 2.5 0 0 1 18 16.5M12 14v-4"/><path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+          </div>
+        </div>
+        <div class="card-category">BOMBEIRO MILITAR</div>
+        <h3>Oficial CBM</h3>
+        <p>Trilha teórica e tática para o concurso de Oficial, com foco em legislação específica e provas discursivas.</p>
+        <div class="card-tags">
+          <span class="tag">Edital atualizado</span>
+          <span class="tag">Plano semanal</span>
+        </div>
+        <a href="editais/cbmal.html" class="btn btn-primary btn-full">Acessar Missão &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="badge badge-orange">● Em breve</span>
+          <div class="icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          </div>
+        </div>
+        <div class="card-category">POLÍCIA FEDERAL</div>
+        <h3>Agente PF</h3>
+        <p>Pré-cadastro de missão. Assim que o edital for publicado, a operação é liberada para todos automaticamente.</p>
+        <div class="card-tags">
+          <span class="tag">Edital atualizado</span>
+          <span class="tag">Plano semanal</span>
+        </div>
+        <button class="btn btn-disabled btn-full" disabled>Em breve</button>
+      </article>
+
     </div>
   </main>
+
+  <footer class="footer-wrapper">
+    <div class="footer-pill">
+      <div class="footer-brand">
+        <div class="icon-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <p><strong>Projeto Astra</strong>Aberto, gratuito, feito pela comunidade.</p>
+      </div>
+      <p class="footer-copy">© 2026 Astra. Sem cadastro, sem mensalidade.</p>
+    </div>
+  </footer>
 
   <script src="js/app.js"></script>
 </body>
